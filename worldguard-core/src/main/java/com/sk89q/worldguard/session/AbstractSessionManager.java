@@ -126,10 +126,10 @@ public abstract class AbstractSessionManager implements SessionManager {
     @Override
     public boolean unregisterHandler(Handler.Factory<? extends Handler> factory) {
         if (defaultHandlers.contains(factory)) {
-            WorldGuard.logger.log(Level.WARNING, "Someone is unregistering a default WorldGuard handler: "
-                    + factory.getClass().getEnclosingClass().getName() + ". This may cause parts of WorldGuard to stop functioning");
+            WorldGuard.logger.log(Level.WARNING, "Кто-то отменяет регистрацию стандартного обработчика WorldGuard: "
+                    + factory.getClass().getEnclosingClass().getName() + ". Это может привести к сбоям в работе некоторых компонентов WorldGuard");
         } else {
-            WorldGuard.logger.log(Level.INFO, "Unregistering session handler "
+            WorldGuard.logger.log(Level.INFO, "Производится удаление обработчика сессий: "
                     + factory.getClass().getEnclosingClass().getName());
         }
         return handlers.remove(factory);

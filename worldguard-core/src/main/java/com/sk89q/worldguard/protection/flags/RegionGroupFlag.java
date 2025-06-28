@@ -46,17 +46,17 @@ public class RegionGroupFlag extends EnumFlag<RegionGroup> {
     public RegionGroup detectValue(String input) {
         input = input.trim();
 
-        if (input.equalsIgnoreCase("members") || input.equalsIgnoreCase("member")) {
+        if (input.equalsIgnoreCase("игроки") || input.equalsIgnoreCase("игрок")) {
             return RegionGroup.MEMBERS;
-        } else if (input.equalsIgnoreCase("owners") || input.equalsIgnoreCase("owner")) {
+        } else if (input.equalsIgnoreCase("владельцы") || input.equalsIgnoreCase("владелец")) {
             return RegionGroup.OWNERS;
-        } else if (input.equalsIgnoreCase("nonowners") || input.equalsIgnoreCase("nonowner")) {
+        } else if (input.equalsIgnoreCase("не владелецы") || input.equalsIgnoreCase("не владелец")) {
             return RegionGroup.NON_OWNERS;
-        } else if (input.equalsIgnoreCase("nonmembers") || input.equalsIgnoreCase("nonmember")) {
+        } else if (input.equalsIgnoreCase("не игроки") || input.equalsIgnoreCase("не игрок")) {
             return RegionGroup.NON_MEMBERS;
-        } else if (input.equalsIgnoreCase("everyone") || input.equalsIgnoreCase("anyone") || input.equalsIgnoreCase("all")) {
+        } else if (input.equalsIgnoreCase("все") || input.equalsIgnoreCase("любой") || input.equalsIgnoreCase("всем")) {
             return RegionGroup.ALL;
-        } else if (input.equalsIgnoreCase("none") || input.equalsIgnoreCase("noone") || input.equalsIgnoreCase("deny")) {
+        } else if (input.equalsIgnoreCase("никто") || input.equalsIgnoreCase("никому") || input.equalsIgnoreCase("запретить")) {
             return RegionGroup.NONE;
         } else {
             return null;

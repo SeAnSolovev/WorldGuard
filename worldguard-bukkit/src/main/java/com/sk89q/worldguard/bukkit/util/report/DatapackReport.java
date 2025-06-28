@@ -30,18 +30,18 @@ import java.util.Collection;
  */
 public class DatapackReport extends DataReport {
     public DatapackReport() {
-        super("DataPacks");
+        super("Датапаки");
 
         Collection<Datapack> packs = Bukkit.getDatapackManager().getPacks();
 
-        append("Datapack Count", packs.size());
-        append("Datapack Enabled Count", Bukkit.getDatapackManager().getEnabledPacks().size());
+        append("Количество датапаков", packs.size());
+        append("Включено датапаков", Bukkit.getDatapackManager().getEnabledPacks().size());
 
         for (Datapack pack : packs) {
-            DataReport report = new DataReport("DataPack: " + pack.getName());
-            report.append("Enabled?", pack.isEnabled());
-            report.append("Name", pack.getName());
-            report.append("Compatibility", pack.getCompatibility().name());
+            DataReport report = new DataReport("Датапак: " + pack.getName());
+            report.append("Включён?", pack.isEnabled());
+            report.append("Название", pack.getName());
+            report.append("Совместимость", pack.getCompatibility().name());
             append(report.getTitle(), report);
         }
     }

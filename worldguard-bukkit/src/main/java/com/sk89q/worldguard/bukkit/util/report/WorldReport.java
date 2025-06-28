@@ -31,45 +31,45 @@ import java.util.stream.Collectors;
 public class WorldReport extends DataReport {
 
     public WorldReport() {
-        super("Worlds");
+        super("Миры");
 
         List<World> worlds = Bukkit.getServer().getWorlds();
 
-        append("World Count", worlds.size());
+        append("Количество миров", worlds.size());
 
         for (World world : worlds) {
-            DataReport report = new DataReport("World: " + world.getName());
+            DataReport report = new DataReport("Мир: " + world.getName());
             report.append("UUID", world.getUID());
-            report.append("World Type", world.getWorldType());
-            report.append("Environment", world.getEnvironment());
+            report.append("Тип мира", world.getWorldType());
+            report.append("Окружение", world.getEnvironment());
             ChunkGenerator generator = world.getGenerator();
-            report.append("Chunk Generator", generator != null ? generator.getClass().getName() : "<Default>");
+            report.append("Генератор чанков", generator != null ? generator.getClass().getName() : "<Стандартный>");
 
-            DataReport spawning = new DataReport("Spawning");
-            spawning.append("Animals?", world.getAllowAnimals());
-            spawning.append("Monsters?", world.getAllowMonsters());
-            spawning.append("Ambient Spawn Limit", world.getAmbientSpawnLimit());
-            spawning.append("Animal Spawn Limit", world.getAnimalSpawnLimit());
-            spawning.append("Monster Spawn Limit", world.getMonsterSpawnLimit());
-            spawning.append("Water Creature Spawn Limit", world.getWaterAnimalSpawnLimit());
+            DataReport spawning = new DataReport("Спавн");
+            spawning.append("Животные разрешены?", world.getAllowAnimals());
+            spawning.append("Монстры разрешены?", world.getAllowMonsters());
+            spawning.append("Лимит спавна нейтральных мобов", world.getAmbientSpawnLimit());
+            spawning.append("Лимит спавна животных", world.getAnimalSpawnLimit());
+            spawning.append("Лимит спавна монстров", world.getMonsterSpawnLimit());
+            spawning.append("Лимит спавна водных существ", world.getWaterAnimalSpawnLimit());
             report.append(spawning.getTitle(), spawning);
 
-            DataReport config = new DataReport("Configuration");
-            config.append("Difficulty", world.getDifficulty());
-            config.append("Max Height", world.getMaxHeight());
-            config.append("Sea Level", world.getSeaLevel());
+            DataReport config = new DataReport("Настройки");
+            config.append("Сложность", world.getDifficulty());
+            config.append("Максимальная высота", world.getMaxHeight());
+            config.append("Уровень моря", world.getSeaLevel());
             report.append(config.getTitle(), config);
 
-            DataReport state = new DataReport("State");
-            state.append("Spawn Location", world.getSpawnLocation());
-            state.append("Full Time", world.getFullTime());
-            state.append("Weather Duration", world.getWeatherDuration());
-            state.append("Thunder Duration", world.getThunderDuration());
+            DataReport state = new DataReport("Состояние");
+            state.append("Точка появления", world.getSpawnLocation());
+            state.append("Время мира", world.getFullTime());
+            state.append("Длительность погоды", world.getWeatherDuration());
+            state.append("Длительность грозы", world.getThunderDuration());
             report.append(state.getTitle(), state);
 
-            DataReport protection = new DataReport("Protection");
+            DataReport protection = new DataReport("Защита");
             protection.append("PVP?", world.getPVP());
-            protection.append("Game Rules", Arrays.stream(world.getGameRules())
+            protection.append("Игровые правила", Arrays.stream(world.getGameRules())
                     .map(name -> name + "=" + world.getGameRuleValue(name))
                     .collect(Collectors.joining(", ")));
             report.append(protection.getTitle(), protection);

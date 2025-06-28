@@ -81,23 +81,23 @@ public class StateFlag extends Flag<StateFlag.State> {
     public State parseInput(FlagContext context) throws InvalidFlagFormat {
         String input = context.getUserInput();
 
-        if (input.equalsIgnoreCase("allow")) {
+        if (input.equalsIgnoreCase("разрешить")) {
             return State.ALLOW;
-        } else if (input.equalsIgnoreCase("deny")) {
+        } else if (input.equalsIgnoreCase("запретить")) {
             return State.DENY;
-        } else if (input.equalsIgnoreCase("none")) {
+        } else if (input.equalsIgnoreCase("нет")) {
             return null;
         } else {
-            throw new InvalidFlagFormat("Expected none/allow/deny but got '" + input + "'");
+            throw new InvalidFlagFormat("Ожидалось none/allow/deny, но получено '" + input + "'");
         }
     }
 
     @Override
     public State unmarshal(Object o) {
         String str = o.toString();
-        if (str.equalsIgnoreCase("allow")) {
+        if (str.equalsIgnoreCase("разрешить")) {
             return State.ALLOW;
-        } else if (str.equalsIgnoreCase("deny")) {
+        } else if (str.equalsIgnoreCase("запретить")) {
             return State.DENY;
         } else {
             return null;
@@ -107,9 +107,9 @@ public class StateFlag extends Flag<StateFlag.State> {
     @Override
     public Object marshal(State o) {
         if (o == State.ALLOW) {
-            return "allow";
+            return "разрешить";
         } else if (o == State.DENY) {
-            return "deny";
+            return "запретить";
         } else {
             return null;
         }

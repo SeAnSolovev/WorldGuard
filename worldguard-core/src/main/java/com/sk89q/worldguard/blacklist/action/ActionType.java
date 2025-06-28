@@ -24,43 +24,43 @@ import com.sk89q.worldguard.blacklist.BlacklistEntry;
 
 public enum ActionType {
 
-    ALLOW("allow") {
+    ALLOW("разрешить") {
         @Override
         public Action parseInput(Blacklist blacklist, BlacklistEntry entry) {
             return AllowAction.getInstance();
         }
     },
-    DENY("deny") {
+    DENY("запретить") {
         @Override
         public Action parseInput(Blacklist blacklist, BlacklistEntry entry) {
             return DenyAction.getInstance();
         }
     },
-    BAN("ban") {
+    BAN("забанить") {
         @Override
         public Action parseInput(Blacklist blacklist, BlacklistEntry entry) {
             return new BanAction(entry);
         }
     },
-    KICK("kick") {
+    KICK("кикнуть") {
         @Override
         public Action parseInput(Blacklist blacklist, BlacklistEntry entry) {
             return new KickAction(entry);
         }
     },
-    LOG("log") {
+    LOG("логировать") {
         @Override
         public Action parseInput(Blacklist blacklist, BlacklistEntry entry) {
             return new LogAction(blacklist, entry);
         }
     },
-    NOTIFY("notify") {
+    NOTIFY("уведомить") {
         @Override
         public Action parseInput(Blacklist blacklist, BlacklistEntry entry) {
             return new NotifyAction(blacklist, entry);
         }
     },
-    TELL("tell") {
+    TELL("сообщить") {
         @Override
         public Action parseInput(Blacklist blacklist, BlacklistEntry entry) {
             return new TellAction(entry);

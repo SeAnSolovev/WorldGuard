@@ -91,7 +91,7 @@ public class SQLDriver implements RegionDriver {
             }
             return stores;
         } catch (SQLException e) {
-            throw new StorageException("Failed to fetch list of worlds", e);
+            throw new StorageException("Не удалось получить список миров", e);
         } finally {
             closer.closeQuietly();
         }
@@ -107,7 +107,7 @@ public class SQLDriver implements RegionDriver {
             try {
                 migrate();
             } catch (SQLException e) {
-                throw new StorageException("Failed to migrate database tables", e);
+                throw new StorageException("Не удалось выполнить миграцию таблиц базы данных", e);
             }
             initialized = true;
         }
@@ -142,9 +142,9 @@ public class SQLDriver implements RegionDriver {
             // We don't bother with migrating really old tables
             if (tablesExist && !isRecent) {
                 throw new StorageException(
-                        "Sorry, your tables are too old for the region SQL auto-migration system. " +
-                                "Please run region_manual_update_20110325.sql on your database, which comes " +
-                                "with WorldGuard or can be found in http://github.com/sk89q/worldguard");
+                        "Извините, ваши таблицы слишком устарели для системы автоматической миграции регионов в SQL. " +
+                                "Пожалуйста, выполните скрипт region_manual_update_20110325.sql для вашей базы данных — он идёт в комплекте с WorldGuard " +
+                                "или доступен по адресу http://github.com/sk89q/worldguard");
             }
 
             // Our placeholders
@@ -164,7 +164,7 @@ public class SQLDriver implements RegionDriver {
                         flyway.setInitVersion(MigrationVersion.fromVersion("1"));
                     }
 
-                    log.log(Level.INFO, "The SQL region tables exist but the migrations table seems to not exist yet. Creating the migrations table...");
+                    log.log(Level.INFO, "Таблицы регионов в SQL существуют, но таблица миграций пока отсутствует. Создаём таблицу миграций...");
                 } else {
                     // By default, if Flyway sees any tables at all in the schema, it
                     // will assume that we are up to date, so we have to manually
@@ -172,7 +172,7 @@ public class SQLDriver implements RegionDriver {
                     // if our test table doesn't exist
                     flyway.setInitVersion(MigrationVersion.fromVersion("0"));
 
-                    log.log(Level.INFO, "SQL region tables do not exist: creating...");
+                    log.log(Level.INFO, "Таблиц регионов в SQL не существует: создаём...");
                 }
             }
 
@@ -184,7 +184,7 @@ public class SQLDriver implements RegionDriver {
             flyway.setValidateOnMigrate(false);
             flyway.migrate();
         } catch (FlywayException e) {
-            throw new StorageException("Failed to migrate tables", e);
+            throw new StorageException("Не удалось выполнить миграцию таблиц", e);
         } finally {
             closer.closeQuietly();
         }
@@ -245,12 +245,12 @@ public class SQLDriver implements RegionDriver {
         try {
             return future.get(CONNECTION_TIMEOUT, TimeUnit.MILLISECONDS);
         } catch (InterruptedException e) {
-            throw new SQLException("Failed to get a SQL connection because the operation was interrupted", e);
+            throw new SQLException("Не удалось установить SQL-соединение, так как операция была прервана", e);
         } catch (ExecutionException e) {
-            throw new SQLException("Failed to get a SQL connection due to an error", e);
+            throw new SQLException("Не удалось установить SQL-соединение из-за ошибки", e);
         } catch (TimeoutException e) {
             future.cancel(true);
-            throw new SQLException("Failed to get a SQL connection within the time limit");
+            throw new SQLException("Не удалось установить SQL-соединение в пределах установленного времени");
         }
     }
 
