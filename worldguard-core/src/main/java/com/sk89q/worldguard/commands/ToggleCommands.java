@@ -123,7 +123,7 @@ public class ToggleCommands {
                         .append(ErrorFormat.wrap("Эта команда "))
                         .append(ErrorFormat.wrap("НАВСЕГДА")
                                 .decoration(TextDecoration.BOLD, TextDecoration.State.TRUE))
-                        .append(ErrorFormat.wrap(" удалит ВСЕх животных во ВСЕХ загруженных чанках во ВСЕХ загруженных мирах. "))
+                        .append(ErrorFormat.wrap(" удалит ВСЕX животных. Во ВСЕХ загруженных чанках, во ВСЕХ загруженных мирах. "))
                         .append(TextComponent.newline())
                         .append(TextComponent.of("[Нажмите]", TextColor.GREEN)
                                 .clickEvent(ClickEvent.of(ClickEvent.Action.RUN_COMMAND, confirmCommand))

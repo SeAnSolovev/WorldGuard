@@ -706,7 +706,7 @@ public final class RegionCommands extends RegionCommandsBase {
      * @throws CommandException any error
      */
     @Command(aliases = {"setpriority", "priority", "pri"},
-             usage = "<id> <priority>",
+             usage = "<id> <приоритет>",
              flags = "w:",
              desc = "Установить приоритет региона",
              min = 2, max = 2)
@@ -973,7 +973,7 @@ public final class RegionCommands extends RegionCommandsBase {
      * @throws CommandException any error
      */
     @Command(aliases = {"migratedb"},
-             usage = "<from> <to>",
+             usage = "<откуда> <куда>",
              flags = "y",
              desc = "Миграция из одной защищённой базы в другую", min = 2, max = 2)
     public void migrateDB(CommandContext args, Actor sender) throws CommandException {
@@ -986,11 +986,11 @@ public final class RegionCommands extends RegionCommandsBase {
         DriverType to = Enums.findFuzzyByValue(DriverType.class, args.getString(1));
 
         if (from == null) {
-            throw new CommandException("Значение 'from' не является распознанным типом базы данных регионов.");
+            throw new CommandException("Значение 'откуда' не является распознанным типом базы данных регионов.");
         }
 
         if (to == null) {
-            throw new CommandException("Значение 'to' не является распознанным типом базы данных регионов.");
+            throw new CommandException("Значение 'куда' не является распознанным типом базы данных регионов.");
         }
 
         if (from == to) {

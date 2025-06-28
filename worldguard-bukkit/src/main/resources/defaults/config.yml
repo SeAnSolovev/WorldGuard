@@ -1,19 +1,22 @@
 #
-# Конфигурационный файл WorldGuard для Minecraft
+# WorldGuard's configuration file
 #
-# Важные указания по редактированию:
-# - НЕ ИСПОЛЬЗУЙТЕ ТАБУЛЯЦИЮ. Используйте только пробелы, иначе Bukkit выдаст ошибку.
-#   В редакторах типа Notepad++ (рекомендуется для Windows) включите опцию
-#   "заменять табы на пробелы" (Настройки > Параметры > Меню Языка).
-# - Сохраняйте отступы. Они группируют параметры по категориям
-#   (например, "enforce-single-session" относится к категории "protection").
-# - Для проверки формата перед использованием вставьте содержимое на сайт
-#   http://yaml-online-parser.appspot.com/ и убедитесь, что нет ошибок ("ERROR:").
-# - Строки, начинающиеся с #, являются комментариями и игнорируются.
+# About editing this file:
+# - DO NOT USE TABS. You MUST use spaces or Bukkit will complain. If
+#   you use an editor like Notepad++ (recommended for Windows users), you
+#   must configure it to "replace tabs with spaces." In Notepad++, this can
+#   be changed in Settings > Preferences > Language Menu.
+# - Don't get rid of the indents. They are indented so some entries are
+#   in categories (like "enforce-single-session" is in the "protection"
+#   category.
+# - If you want to check the format of this file before putting it
+#   into WorldGuard, paste it into http://yaml-online-parser.appspot.com/
+#   and see if it gives "ERROR:".
+# - Lines starting with # are commentsand so they are ignored.
 #
-# ВНИМАНИЕ:
-# Перед использованием проверьте таблицу совместимости WorldGuard,
-# чтобы убедиться в работоспособности функций для вашей версии Bukkit.
+# WARNING:
+# Remember to check the compatibility spreadsheet for WorldGuard to see
+# if any features are currently broken in your version of Bukkit.
 #
 
-# -- Этот раздел автоматически заменяется плагином в игре --
+# -- This should be automatically replaced by the plugin in-game --

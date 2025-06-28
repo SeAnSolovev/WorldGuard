@@ -252,7 +252,7 @@ public class WorldGuardPlayerListener extends AbstractListener {
                 ItemStack heldItem = player.getInventory().getItem(slot);
                 if (heldItem != null && heldItem.getAmount() < 0) {
                     player.getInventory().setItem(slot, null);
-                    player.sendMessage(ChatColor.RED + "Бесконечный стек в слоте #" + slot + " был удалён.");
+                    player.sendMessage(ChatColor.RED + "Бесконечный стак в слоте #" + slot + " был удалён.");
                 }
             }
         }

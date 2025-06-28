@@ -81,10 +81,10 @@ public class CancelReport implements Report {
         if (!cancels.isEmpty()) {
             StringBuilder builder = new StringBuilder();
 
-            builder.append("Было ли действие заблокировано? ").append(cancellable.isCancelled() ? "ДА" : "НЕТ").append("\n");
+            builder.append("Was the action blocked? ").append(cancellable.isCancelled() ? "YES" : "NO").append("\n");
 
             if (cancels.size() != 1) {
-                builder.append("Запись №1 оказалась решающей.\n");
+                builder.append("Entry #1 had the last word.\n");
             }
 
             for (int i = cancels.size() - 1; i >= 0; i--) {
@@ -96,12 +96,12 @@ public class CancelReport implements Report {
 
                 builder.append("#").append(index).append(" ");
                 builder.append(getCancelText(cancel.getAfter()));
-                builder.append(" плагином ");
+                builder.append(" by ");
 
                 if (detectingPlugin && cause != null) {
                     builder.append(cause.getName());
                 } else {
-                    builder.append(" (НЕИЗВЕСТНО — смотрите стек вызовов ниже)");
+                    builder.append(" (NOT KNOWN - use the stack trace below)");
                     builder.append("\n");
                     builder.append(new StackTraceReport(stackTrace).toString().replaceAll("(?m)^", "\t"));
                 }
@@ -111,15 +111,15 @@ public class CancelReport implements Report {
 
             return builder.toString();
         } else {
-            return "Ни один плагин не отменил событие. Возможные другие причины отмены: " +
-                    "(1) Bukkit может использовать другое событие для этого действия " +
-                    " (например, для ведра используется отдельное событие); " +
-                    "(2) Охрана спауна в Minecraft не была отключена.";
+            return "No plugins cancelled the event. Other causes for cancellation: " +
+                    "(1) Bukkit may be using a different event for the action " +
+                    " (example: buckets have their own bucket events); or " +
+                    "(2) Minecraft's spawn protection has not been disabled.";
         }
     }
 
     private static String getCancelText(boolean flag) {
-        return flag ? "ЗАБЛОКИРОВАНО" : "РАЗРЕШЕНО";
+        return flag ? "BLOCKED" : "ALLOWED";
     }
 
 }

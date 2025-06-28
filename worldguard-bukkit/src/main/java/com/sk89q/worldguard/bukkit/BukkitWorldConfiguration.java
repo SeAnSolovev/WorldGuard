@@ -414,7 +414,7 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
                             + disableFireSpreadBlocks.size() + " типами блоков.");
                 } else {
                     log.log(Level.INFO, "(" + worldName
-                            + ") Распространение огня НЕ ОГРАНИЧЕНО.");
+                            + ") Распространение огня РАЗРЕШЕНО.");
                 }
             }
         }

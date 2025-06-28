@@ -81,11 +81,11 @@ public class StateFlag extends Flag<StateFlag.State> {
     public State parseInput(FlagContext context) throws InvalidFlagFormat {
         String input = context.getUserInput();
 
-        if (input.equalsIgnoreCase("разрешить")) {
+        if (input.equalsIgnoreCase("allow")) {
             return State.ALLOW;
-        } else if (input.equalsIgnoreCase("запретить")) {
+        } else if (input.equalsIgnoreCase("deny")) {
             return State.DENY;
-        } else if (input.equalsIgnoreCase("нет")) {
+        } else if (input.equalsIgnoreCase("none")) {
             return null;
         } else {
             throw new InvalidFlagFormat("Ожидалось none/allow/deny, но получено '" + input + "'");
@@ -95,9 +95,9 @@ public class StateFlag extends Flag<StateFlag.State> {
     @Override
     public State unmarshal(Object o) {
         String str = o.toString();
-        if (str.equalsIgnoreCase("разрешить")) {
+        if (str.equalsIgnoreCase("allow")) {
             return State.ALLOW;
-        } else if (str.equalsIgnoreCase("запретить")) {
+        } else if (str.equalsIgnoreCase("deny")) {
             return State.DENY;
         } else {
             return null;
@@ -107,9 +107,9 @@ public class StateFlag extends Flag<StateFlag.State> {
     @Override
     public Object marshal(State o) {
         if (o == State.ALLOW) {
-            return "разрешить";
+            return "allow";
         } else if (o == State.DENY) {
-            return "запретить";
+            return "deny";
         } else {
             return null;
         }

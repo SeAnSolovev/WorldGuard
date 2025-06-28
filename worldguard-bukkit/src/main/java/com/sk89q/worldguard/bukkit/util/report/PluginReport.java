@@ -26,27 +26,27 @@ import org.bukkit.plugin.Plugin;
 public class PluginReport extends DataReport {
 
     public PluginReport() {
-        super("Плагины");
+        super("Plugins");
 
         Plugin[] plugins = Bukkit.getServer().getPluginManager().getPlugins();
 
-        append("Количество плагинов", plugins.length);
+        append("Plugin Count", plugins.length);
 
         for (Plugin plugin : plugins) {
-            DataReport report = new DataReport("Плагин: " + plugin.getName());
-            report.append("Включён?", plugin.isEnabled());
-            report.append("Полное имя", plugin.getDescription().getFullName());
-            report.append("Версия", plugin.getDescription().getVersion());
-            report.append("Веб-сайт", plugin.getDescription().getWebsite());
-            report.append("Описание", plugin.getDescription().getDescription());
-            report.append("Авторы", plugin.getDescription().getAuthors());
-            report.append("Загружается до", plugin.getDescription().getLoadBefore());
-            report.append("Зависимости", plugin.getDescription().getDepend());
-            report.append("Необязательные зависимости", plugin.getDescription().getSoftDepend());
-            report.append("Директория", plugin.getDataFolder().getAbsoluteFile());
-            report.append("Точка входа", plugin.getDescription().getMain());
-            report.append("Класс", plugin.getClass().getName());
-            report.append("Источник класса", plugin.getClass().getProtectionDomain().getCodeSource().getLocation());
+            DataReport report = new DataReport("Plugin: " + plugin.getName());
+            report.append("Enabled?", plugin.isEnabled());
+            report.append("Full Name", plugin.getDescription().getFullName());
+            report.append("Version", plugin.getDescription().getVersion());
+            report.append("Website", plugin.getDescription().getWebsite());
+            report.append("Description", plugin.getDescription().getDescription());
+            report.append("Authors", plugin.getDescription().getAuthors());
+            report.append("Load Before", plugin.getDescription().getLoadBefore());
+            report.append("Dependencies", plugin.getDescription().getDepend());
+            report.append("Soft Dependencies", plugin.getDescription().getSoftDepend());
+            report.append("Folder", plugin.getDataFolder().getAbsoluteFile());
+            report.append("Entry Point", plugin.getDescription().getMain());
+            report.append("Class", plugin.getClass().getName());
+            report.append("Class Source", plugin.getClass().getProtectionDomain().getCodeSource().getLocation());
             append(report.getTitle(), report);
         }
     }

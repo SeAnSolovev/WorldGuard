@@ -404,7 +404,7 @@ class RegionCommandsBase {
             selector.setWorld(world);
             session.setRegionSelector(world, selector);
             selector.explainRegionAdjust(actor, session);
-            actor.print("Регион выбран как  " + region.getType().getName());
+            actor.print("Регион выбран как " + region.getType().getName());
         } else {
             throw new CommandException("Невозможно выбрать этот регион! " +
                     "Тип региона '" + region.getType().getName() + "' не поддерживается для выбора.");

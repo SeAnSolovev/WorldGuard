@@ -232,7 +232,7 @@ public final class Flags {
     public static final StringFlag ENTRY_DENY_MESSAGE = register(new StringFlag("entry-deny-message",
             LegacyComponentSerializer.INSTANCE.serialize(TextComponent.of("").append(TextComponent.of("Эй!",
                     TextColor.RED, Sets.newHashSet(TextDecoration.BOLD)))
-                    .append(TextComponent.of(" Вам не разрешено входить в эту зону.", TextColor.GRAY)))));
+                    .append(TextComponent.of(" Вам не разрешено входить в этот регион.", TextColor.GRAY)))));
     /**
      * @deprecated The type of this flag will change from a StringFlag to a ComponentFlag to support JSON text
      *              in a future release. If you depend on the type of this flag, take proper precaution for future breakage.
@@ -241,7 +241,7 @@ public final class Flags {
     public static final StringFlag EXIT_DENY_MESSAGE = register(new StringFlag("exit-deny-message",
             LegacyComponentSerializer.INSTANCE.serialize(TextComponent.of("").append(TextComponent.of("Эй!",
                     TextColor.RED, Sets.newHashSet(TextDecoration.BOLD)))
-                    .append(TextComponent.of(" Вам не разрешено покидать эту зону.", TextColor.GRAY)))));
+                    .append(TextComponent.of(" Вам не разрешено покидать этот регион.", TextColor.GRAY)))));
 
     private Flags() {
     }

@@ -81,6 +81,8 @@ public class WorldGuardCommands {
     public void version(CommandContext args, Actor sender) throws CommandException {
         sender.print("WorldGuard " + WorldGuard.getVersion());
         sender.print("http://www.enginehub.org");
+        sender.print("Перевод плагина:");
+        sender.print("https://github.com/SeAnSolovev/WorldGuard");
 
         sender.printDebug("----------- Платформы -----------");
         sender.printDebug(String.format("* %s (%s)", worldGuard.getPlatform().getPlatformName(), worldGuard.getPlatform().getPlatformVersion()));
@@ -210,7 +212,7 @@ public class WorldGuardCommands {
             sampler = activeSampler = builder.start();
         }
 
-        sender.print(TextComponent.of("SЗапуск профилирования CPU. Результаты будут доступны через " + minutes + " минут.", TextColor.LIGHT_PURPLE)
+        sender.print(TextComponent.of("Запуск профилирования CPU. Результаты будут доступны через " + minutes + " минут(у/ы).", TextColor.LIGHT_PURPLE)
                 .append(TextComponent.newline())
                 .append(TextComponent.of("Используйте ", TextColor.GRAY))
                 .append(TextComponent.of("/wg stopprofile", TextColor.AQUA)
@@ -218,7 +220,7 @@ public class WorldGuardCommands {
                 .append(TextComponent.of(" в любое время для отмены профилирования CPU.", TextColor.GRAY)));
 
         worldGuard.getSupervisor().monitor(FutureForwardingTask.create(
-                sampler.getFuture(), "Профилирование CPU в течение " + minutes + " минут", sender));
+                sampler.getFuture(), "Профилирование CPU в течение " + minutes + " минут(у/ы)", sender));
 
         sampler.getFuture().addListener(() -> {
             synchronized (WorldGuardCommands.this) {

@@ -1,61 +1,62 @@
 #
-# Черный список WorldGuard
+# WorldGuard blacklist
 #
-# Черный список позволяет блокировать использование предметов, блоков и действий.
-# Вы выбираете набор "элементов для блокировки" и список "действий при нарушении".
+# The blacklist lets you block actions, blocks, and items from being used.
+# You choose a set of "items to affect" and a list of "actions to perform."
 #
 ###############################################################################
 #
-# Пример блокировки добычи и установки руды:
+# Example to block some ore mining and placement:
 # [coal_ore,gold_ore,iron_ore]
 # on-break=deny,log,kick
 # on-place=deny,tell
 #
-# Доступные события для отслеживания:
-# - on-break (попытка разрушить блок)
-# - on-destroy-with (предмет в руке при разрушении)
-# - on-place (установка блока)
-# - on-use (использование предмета: огниво, ведро и т.д.)
-# - on-interact (взаимодействие с блоком: двери, сундуки и пр.)
-# - on-drop (выбрасывание предмета из инвентаря)
-# - on-acquire (попадание предмета в инвентарь)
-# - on-equip (экипировка предмета в слоты брони)
-#      ВНИМАНИЕ: on-equip может работать избыточно из-за ограничений Bukkit API
-# - on-dispense (выдача предмета раздатчиком)
+# Events that you can detect:
+# - on-break (when a block of this type is about to be broken)
+# - on-destroy-with (the item/block held by the user while destroying)
+# - on-place (a block is being placed)
+# - on-use (an item like flint and steel or a bucket is being used)
+# - on-interact (when a block in used (doors, chests, etc.))
+# - on-drop (an item is being dropped from the player's inventory)
+# - on-acquire (an item enters a player's inventory via some method)
+# - on-equip (an item is equipped to the player's armor slots)
+#      NOTE: on-equip is overprotective due to deficiencies in Bukkit API
+# - on-dispense (a dispenser is about to dispense an item)
 #
-# Доступные действия:
-# - deny (запретить действие - основной режим черного списка)
-# - allow (разрешить - для режима белого списка)
-# - notify (уведомить админов с правом 'worldguard.notify')
-# - log (записать в лог)
-# - tell (сообщить игроку о запрете)
-# - kick (кикнуть игрока)
-# - ban (забанить игрока)
+# Actions (for events):
+# - deny (deny completely, used blacklist mode)
+# - allow (used in whitelist mode)
+# - notify (notify admins with the 'worldguard.notify' permission)
+# - log (log to console/file/database)
+# - tell (tell a player that that's not allowed)
+# - kick (kick player)
+# - ban (ban player)
 #
-# Дополнительные параметры:
-# - ignore-groups (группы игроков, на которых не распространяются ограничения)
-# - ignore-perms (специальные права, дающие иммунитет к ограничениям)
-# - comment (комментарий для логов и уведомлений)
-# - message (кастомное сообщение для игрока; %s - название предмета)
+# Options:
+# - ignore-groups (comma-separated list of groups to not affect)
+# - ignore-perms (comma-separated list of permissions to not affect - make up
+#   your very own permissions!)
+# - comment (message for yourself that is printed with 'log' and 'notify')
+# - message (optional message to show the user instead; %s is the item name)
 #
 ###############################################################################
 #
-# Подробная документация:
+# For more information, see:
 # https://worldguard.enginehub.org/en/latest/blacklist/
 #
 ###############################################################################
 #
-# Примеры использования.
-# ПОМНИТЕ: Строки, начинающиеся с #, игнорируются.
+# Some examples follow.
+# REMEMBER: If a line has # in front, it will be ignored.
 #
 
-# Запрет ведер с лавой
+# Deny lava buckets
 #[lava_bucket]
 #ignore-perms=my.own.madeup.permission
 #ignore-groups=admins,mods
 #on-use=deny,tell
 
-# Запрет добычи руды
+# Deny some ore
 #[coal_ore,gold_ore,iron_ore]
 #ignore-groups=admins,mods
 #on-break=notify,deny,log
